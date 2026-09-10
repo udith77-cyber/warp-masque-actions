@@ -28,65 +28,28 @@ SNI_NODE = ("162.159.198.1", 443)
 
 RS = "https://raw.githubusercontent.com"
 RULESETS = [
-    ("🎯 全球直连", f"{RS}/cmliu/ACL4SSR/refs/heads/main/Clash/CFnat.list"),
     ("🎯 全球直连", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list"),
     ("🎯 全球直连", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/UnBan.list"),
     ("🛑 全球拦截", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/BanAD.list"),
     ("🍃 应用净化", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list"),
-    ("🍃 应用净化", f"{RS}/cmliu/ACL4SSR/main/Clash/adobe.list"),
-    ("🍃 应用净化", f"{RS}/cmliu/ACL4SSR/main/Clash/IDM.list"),
     ("📢 谷歌FCM", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list"),
     ("🎯 全球直连", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list"),
     ("🎯 全球直连", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list"),
     ("Ⓜ️ 微软服务", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list"),
     ("🍎 苹果服务", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Apple.list"),
-    ("📲 电报信息", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Telegram.list"),
+    ("📲 电报消息", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Telegram.list"),
+    ("🤖 AI服务", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AI.list"),
     ("🤖 AI服务", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list"),
-    ("🤖 AI服务", f"{RS}/juewuy/ShellClash/master/rules/ai.list"),
-    ("🤖 AI服务", f"{RS}/cmliu/ACL4SSR/main/Clash/Copilot.list"),
-    ("🤖 AI服务", f"{RS}/cmliu/ACL4SSR/main/Clash/GithubCopilot.list"),
-    ("🤖 AI服务", f"{RS}/cmliu/ACL4SSR/main/Clash/Claude.list"),
-    ("🤖 AI服务", f"{RS}/cmliu/ACL4SSR/main/Clash/Gemini.list"),
     ("📹 油管视频", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list"),
     ("🎥 奈飞视频", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list"),
     ("🌍 国外媒体", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"),
-    ("🌍 国外媒体", f"{RS}/cmliu/ACL4SSR/main/Clash/Emby.list"),
-    ("🚀 节点选择", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list"),
-    ("🚀 节点选择", f"{RS}/cmliu/ACL4SSR/main/Clash/CMBlog.list"),
+    ("🚀 节点选择", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list"),
+    ("🎯 全球直连", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list"),
     ("🎯 全球直连", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list"),
     ("🎯 全球直连", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list"),
+    ("🎯 全球直连", f"{RS}/ACL4SSR/ACL4SSR/master/Clash/Download.list")
 ]
 
-# 规则集只盖到 OpenAI / Claude / Gemini / Copilot，其他家没人维护。
-# 这批是自己补的。别往里加 googleapis.com、cloudflare.com 这类共用域名，
-# 会把大量无关流量拽进 AI 分组。和 worker/src/config.js 里那份保持一致。
-AI_DOMAINS = [
-    "openai.fm", "operator.chatgpt.com", "chat.com", "anthropic.com",
-    "claude.ai", "claudeusercontent.com", "gemini.google.com", "aistudio.google.com",
-    "generativelanguage.googleapis.com", "notebooklm.google.com", "notebooklm.google", "labs.google",
-    "deepmind.com", "x.ai", "grok.com", "meta.ai",
-    "perplexity.ai", "pplx.ai", "perplexity.com", "mistral.ai",
-    "chat.mistral.ai", "cohere.com", "cohere.ai", "ai21.com",
-    "together.ai", "together.xyz", "fireworks.ai", "groq.com",
-    "huggingface.co", "hf.co", "huggingface.js.org", "replicate.com",
-    "replicate.delivery", "runpod.io", "modal.com", "openrouter.ai",
-    "poe.com", "quora.com", "cursor.com", "cursor.sh",
-    "codeium.com", "windsurf.com", "tabnine.com", "sourcegraph.com",
-    "phind.com", "v0.dev", "v0.app", "bolt.new",
-    "lovable.dev", "devin.ai", "cognition.ai", "midjourney.com",
-    "stability.ai", "stablediffusionweb.com", "leonardo.ai", "runwayml.com",
-    "pika.art", "lumalabs.ai", "ideogram.ai", "recraft.ai",
-    "krea.ai", "civitai.com", "elevenlabs.io", "eleven-labs.com",
-    "play.ht", "suno.com", "suno.ai", "udio.com",
-    "assemblyai.com", "deepgram.com", "you.com", "kagi.com",
-    "exa.ai", "tavily.com", "jasper.ai", "copy.ai",
-    "writesonic.com", "notion.so", "langchain.com", "langsmith.com",
-    "wandb.ai", "weightsandbiases.com", "pinecone.io", "weaviate.io",
-    "qdrant.tech", "chromadb.com", "deepseek.com", "moonshot.cn",
-    "moonshotai.com", "kimi.com", "bigmodel.cn", "zhipuai.cn",
-    "z.ai", "minimaxi.com", "minimax.io", "hailuoai.com",
-    "siliconflow.cn", "dashscope.aliyuncs.com",
-]
 
 
 def pem_to_b64der(pem):
@@ -183,26 +146,17 @@ def build(cfg):
     path: ./ruleset/{pn}.list""")
         rules.append(f"  - RULE-SET,{pn},{group}")
 
-    # 内联的 AI 域名放在 RULE-SET 前面，别被上游更宽的条目抢先命中
-    rules = [f"  - DOMAIN-SUFFIX,{d},🤖 AI服务" for d in AI_DOMAINS] + rules
-
     links = masque_links(cfg, priv, pub)
 
-    return links, f"""# Cloudflare WARP over MASQUE - mihomo 配置
-# 由 GitHub Actions 自动生成，请勿手工编辑
-# 需要 mihomo Alpha 分支：稳定版没有 masque outbound
-#
-# 节点 {len(names)} 个，endpoint 均经真机握手实测。
-# private-key 等同账号凭据。
-
-mixed-port: 7890
-allow-lan: false
-mode: rule
+    return links, f"""
+  
+port: 7890
+socks-port: 7891
+allow-lan: true
+bind-address: "*"
+ipv6: false
+mode: Rule
 log-level: info
-ipv6: true
-unified-delay: true
-tcp-concurrent: true
-find-process-mode: 'off'
 external-controller: 127.0.0.1:9090
 
 profile:
@@ -225,30 +179,46 @@ sniffer:
 
 dns:
   enable: true
-  listen: 0.0.0.0:1053
-  ipv6: true
-  enhanced-mode: fake-ip
+  ipv6: false
+  listen: 0.0.0.0:53
   fake-ip-range: 198.18.0.1/16
+  use-hosts: true
   fake-ip-filter:
-    - '+.lan'
-    - '+.local'
-    - '*.msftconnecttest.com'
-    - '*.msftncsi.com'
+    - "*.lan"
+    - "*.local"
+    - "*.arpa"
+    - time.*.com
+    - ntp.*.com
+    - +.market.xiaomi.com
+    - localhost.ptlogin2.qq.com
+    - "*.msftncsi.com"
+    - www.msftconnecttest.com
   default-nameserver:
-    - 223.5.5.5
     - 119.29.29.29
+    - 223.5.5.5
   nameserver:
-    - https://223.5.5.5/dns-query
-    - https://1.12.12.12/dns-query
-  proxy-server-nameserver:
-    - https://223.5.5.5/dns-query
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
   nameserver-policy:
-    'geosite:cn,private':
-      - https://223.5.5.5/dns-query
-      - https://1.12.12.12/dns-query
-    'geosite:geolocation-!cn':
-      - https://1.1.1.1/dns-query
-      - https://8.8.8.8/dns-query
+    geosite:cn:
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    geosite:geolocation-!cn:
+      - https://dns.cloudflare.com/dns-query
+      - https://dns.google/dns-query
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  fallback:
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
 
 proxies:
 {chr(10).join(proxies)}
